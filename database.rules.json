@@ -5,15 +5,25 @@
     "log": {
       ".read": true,
       "$logId": {
-        ".validate": "newData.hasChildren(['req', 'timestamp'])"
+        ".validate": "newData.hasChildren(['general', 'headers', 'body', 'timestamp'])",
+        "general": { ".validate": "newData.isString()" },
+        "headers": { ".validate": "newData.isString()" },
+        "body": { ".validate": "newData.isString()" },
+        "timestamp": { ".validate": "newData.isNumber()" }
       }
     },
-    "log-date": {
+    "hour-log": {
       ".read": true,
       "$ym": {
         "$d": {
           "$h": {
-            ".validate": "newData.isNumber()"
+            "$logId": {
+              ".validate": "newData.hasChildren(['general', 'headers', 'body', 'timestamp'])",
+              "general": { ".validate": "newData.isString()" },
+              "headers": { ".validate": "newData.isString()" },
+              "body": { ".validate": "newData.isString()" },
+              "timestamp": { ".validate": "newData.isNumber()" }
+            }
           }
         }
       }
