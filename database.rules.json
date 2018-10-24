@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "log": {
+      ".read": true,
+      "$logId": {
+        ".validate": "newData.hasChildren(['req', 'timestamp'])"
+      }
+    },
+    "log-date": {
+      ".read": true,
+      "$ym": {
+        "$d": {
+          "$h": {
+            ".validate": "newData.isNumber()"
+          }
+        }
+      }
+    }
+  }
+}
