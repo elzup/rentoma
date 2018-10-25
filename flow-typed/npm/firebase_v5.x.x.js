@@ -1,5 +1,5 @@
-// flow-typed signature: 6b12f0d0bb2dbcec1a744a0b603ae937
-// flow-typed version: 34d4763345/firebase_v5.x.x/flow_>=v0.34.x
+// flow-typed signature: dd3937a2dc9f124d12f93d82edaafa2c
+// flow-typed version: bda9fc5659/firebase_v5.x.x/flow_>=v0.34.x
 
 /* @flow */
 /** ** firebase ****/
@@ -523,7 +523,7 @@ declare class $npm$firebase$firestore$Query {
   ): $npm$firebase$firestore$Query;
   startAfter(snapshotOrVarArgs: $npm$firebase$firestore$DocumentSnapshot | {}): $npm$firebase$firestore$Query;
   startAt(snapshotOrVarArgs: $npm$firebase$firestore$DocumentSnapshot | {}): $npm$firebase$firestore$Query;
-  where(fieldPath: string, opStr: '<' | '<=' | '==' | '>' | '>=', value: any): $npm$firebase$firestore$Query;
+  where(fieldPath: string, opStr: '<' | '<=' | '==' | 'array-contains' | '>' | '>=', value: any): $npm$firebase$firestore$Query;
 }
 
 declare class $npm$firebase$firestore$CollectionReference extends $npm$firebase$firestore$Query {
