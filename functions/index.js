@@ -37,7 +37,8 @@ exports.log = functions.https.onRequest((req, response) => {
   const log = {
     general,
     headers,
-    body
+    body,
+    timestamp
   }
 
   admin

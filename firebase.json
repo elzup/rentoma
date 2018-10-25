@@ -7,7 +7,7 @@
     "ignore": ["**", "!build/**"],
     "rewrites": [
       {
-        "source": "/log/**",
+        "source": "/log",
         "function": "log"
       }
     ]
