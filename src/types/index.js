@@ -24,6 +24,7 @@ export type System = {
 }
 
 export type Log = {
+  id: string,
   general: any,
   headers: any,
   body: any,

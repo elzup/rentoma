@@ -13,7 +13,7 @@ const NavBar = (props: Props) => (
     <AppBar position="static" color="primary">
       <Toolbar color="inherit">
         <div style={{ display: 'flex' }}>
-          <Typography variant="title" color="inherit" style={{ flex: 1 }}>
+          <Typography variant="h6" style={{ flex: 1 }}>
             {props.title || 'Rentoma'}
           </Typography>
           {props.children}

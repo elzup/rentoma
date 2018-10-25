@@ -11,12 +11,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    display1: {
-      padding: '20px',
-    },
-    title: {
-      padding: '10px',
-    },
+    useNextVariants: true,
   },
   paper: {
     padding: '10px',

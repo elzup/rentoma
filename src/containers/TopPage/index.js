@@ -1,14 +1,15 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
-import type { State as RootState } from '../../types'
+
+import type { State as RootState, Log } from '../../types'
 import * as selectors from './selectors'
 import { Page } from '../../components/common'
 import { load } from './logic'
 
 type Props = {
   load: typeof load,
-  logs: any,
+  logs: Log[],
 }
 
 class TopPage extends React.Component<Props> {
@@ -17,8 +18,16 @@ class TopPage extends React.Component<Props> {
   }
 
   render() {
-    // const { props } = this
-    return <Page>hoge</Page>
+    const { props } = this
+    return (
+      <Page>
+        {props.logs.map(log => (
+          <code>
+            <pre>{JSON.stringify(log)}</pre>
+          </code>
+        ))}
+      </Page>
+    )
   }
 }
 

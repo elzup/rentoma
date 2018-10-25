@@ -4,6 +4,12 @@
   },
   "hosting": {
     "public": "build",
-    "ignore": ["**", "!build/**"]
+    "ignore": ["**", "!build/**"],
+    "rewrites": [
+      {
+        "source": "/log/**",
+        "function": "log"
+      }
+    ]
   }
 }
