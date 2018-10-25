@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+
 import { Grid, Paper } from '@material-ui/core'
 
 export const Button = styled.button`
@@ -26,3 +27,24 @@ export const Page = (props: Object) => (
     </Grid>
   </Grid>
 )
+
+export const GlobalStyle = createGlobalStyle` 
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI',
+      'Noto Sans Japanese', 'ヒラギノ角ゴ ProN W3', Meiryo, sans-serif;
+    margin: 0;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  td {
+    text-align: center;
+  }
+
+  * {
+    cursor: 'pointer';
+  }
+`

@@ -7,7 +7,7 @@ export const timeLabel = (timestamp: number) => {
   return m.format(`YYYY-MM-DD HH:mm:ss (${m.fromNow()})`)
 }
 
-function download(text, filename, mimeType = 'text/plain') {
+export function download(text, filename, mimeType = 'text/plain') {
   const href = `data:${mimeType};charset=utf-8,` + encodeURIComponent(text)
   const a = document.createElement('a')
   a.setAttribute('href', href)

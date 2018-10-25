@@ -21,12 +21,10 @@ const add = (v, n) => {
   return n
 }
 
-exports.dump = functions.https.onRequest((req, response) => {
+exports.log = functions.https.onRequest((req, response) => {
   const { body, headers } = req
-  const pushRef = admin
-    .database()
-    .ref('/dump')
-    .push()
+  const timestamp = Date.now()
+  const { timePath } = getTimes(timestamp)
 
   const requestURL = req.protocol + '://' + req.get('host') + req.originalUrl
   const remoteAddress =
@@ -36,25 +34,37 @@ exports.dump = functions.https.onRequest((req, response) => {
     requestMethod: req.method,
     remoteAddress
   }
-  pushRef.set(
-    {
-      req: {
-        general,
-        headers,
-        body
-      }
-    },
-    error => {
+  const log = {
+    general,
+    headers,
+    body
+  }
+
+  admin
+    .database()
+    .ref('/log')
+    .push(log, error => {
       if (error) {
         console.log('save error', error.message)
         response
           .status(500)
           .send(error.message)
           .end()
-      } else {
-        console.log('save success')
-        response.status(200).end()
       }
-    }
-  )
+    })
+  admin
+    .database()
+    .ref(`/hour-log/${timePath}`)
+    .push(log, error => {
+      if (error) {
+        console.log('save error', error.message)
+        response
+          .status(500)
+          .send(error.message)
+          .end()
+      }
+    })
+
+  console.log('save success')
+  response.status(200).end()
 })

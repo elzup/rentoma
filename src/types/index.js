@@ -23,6 +23,13 @@ export type System = {
   timestampStr: string,
 }
 
+export type Log = {
+  general: any,
+  headers: any,
+  body: any,
+  timestamp: number,
+}
+
 export type Axis = {
   x: number,
   y: number,
