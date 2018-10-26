@@ -20,7 +20,7 @@ type LogSnap = {
     path: string,
   },
   headers: ?Object,
-  body: ?string,
+  body: string | Object | null | void,
   timestamp: number,
 }
 
@@ -34,12 +34,24 @@ const filterHeader = (header: ?Object) => {
   // return _.omit(header, config.removeHeaderKeys)
 }
 
+const bodyToString = (body: string | Object | null | void): string => {
+  if (typeof body === 'string') {
+    return body
+  } else if (!body) {
+    return '[ body empty ]'
+  } else {
+    return JSON.stringify(body, null, '  ')
+  }
+}
+
 const toLog = (snap: LogSnap, id: string): Log => {
+  const body = bodyToString(snap.body)
   return {
     id,
     general: snap.general,
     headers: filterHeader(snap.headers),
-    body: snap.body || '',
+    body,
+    isJson: typeof body === 'object' && body !== null,
     timestamp: snap.timestamp,
   }
 }

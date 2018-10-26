@@ -34,6 +34,7 @@ export type Log = {
   },
   headers: Object,
   body: string,
+  isJson: boolean,
   timestamp: number,
 }
 
