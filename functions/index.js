@@ -45,16 +45,19 @@ const filterHeadersKeys = [
 ]
 
 exports.log = functions.https.onRequest((req, response) => {
-  const { body, headers } = req
+  const { body, headers, httpVersion, originalUrl, protocol, method } = req
   filterHeadersKeys.forEach(key => {
     delete headers[key]
   })
   const { timePath, timestamp } = getTimes()
 
-  const requestURL = req.protocol + '://' + req.get('host') + req.originalUrl
+  const url = protocol + '://' + req.get('host') + originalUrl
   const general = {
-    requestURL,
-    requestMethod: req.method
+    url,
+    protocol,
+    httpVersion,
+    method,
+    path: originalUrl
   }
   const log = {
     general,

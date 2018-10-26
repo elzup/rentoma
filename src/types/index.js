@@ -26,9 +26,11 @@ export type System = {
 export type Log = {
   id: string,
   general: {
-    remoteAddress: string,
-    requestMethod: string,
-    requestURL: string,
+    url: string,
+    protocol: string,
+    httpVersion: string,
+    method: string,
+    path: string,
   },
   headers: Object,
   body: string,
