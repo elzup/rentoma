@@ -13,14 +13,19 @@ const EyeCatch = (props: Props) => {
         <br />
         <code>https://rentoma.anozon.me/log</code>
         へHTTPリクエストを送るとサーバーのログをここで見ることが出来ます。
+        <br />
+        <span style={{ color: 'red' }}>
+          ※ body の内容を確認する場合は content-type: text/plain を推奨します。
+        </span>
       </p>
       <code>
         <pre>
           {`例:
 curl --request POST \\
   --url https://rentoma.anozon.me/log \\
-  --header 'content-type: application/json' \\
-  --data '{ "hoge": "fuga" }'
+  --header 'content-type: text/plain' \\
+  --header 'x-original-header: Hello_Toshino' \\
+  --data '{ "broken: "JSON" }'
           `}
         </pre>
       </code>

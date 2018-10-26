@@ -8,6 +8,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 // import { GlobalStyle } from './components/common'
 import App from './containers/App'
 import configureStore from './store'
+import registerServiceWorker from './registerServiceWorker'
 
 import theme from './theme'
 
@@ -29,3 +30,5 @@ if (root) {
     root,
   )
 }
+
+registerServiceWorker()

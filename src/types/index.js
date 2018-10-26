@@ -36,6 +36,7 @@ export type Log = {
   body: string,
   isJson: boolean,
   timestamp: number,
+  timeLabel: string,
 }
 
 export type Axis = {

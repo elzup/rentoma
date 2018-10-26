@@ -44,8 +44,19 @@ const filterHeadersKeys = [
   'x-varnish'
 ]
 
+function bodyValidation(contentType, body) {
+  if (contentType && contentType !== 'text/plain') {
+    return '[bad body. ContentType expected "text/plain".]'
+  }
+  if (body && body.length > 1000) {
+    return '[bad body. Body length <= 1000]'
+  }
+  return body
+}
+
 exports.log = functions.https.onRequest((req, response) => {
-  const { body, headers, httpVersion, originalUrl, protocol, method } = req
+  const { headers, httpVersion, originalUrl, protocol, method } = req
+  const body = bodyValidation(headers['content-type'], req.body)
   filterHeadersKeys.forEach(key => {
     delete headers[key]
   })

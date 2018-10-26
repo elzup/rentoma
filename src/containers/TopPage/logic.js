@@ -1,6 +1,7 @@
 // @flow
 
 import _ from 'lodash'
+import moment from 'moment'
 import type { ThunkAction, Log } from '../../types'
 import * as firebaseLogic from '../Firebase/logic'
 import * as actions from './actions'
@@ -54,6 +55,7 @@ const toLog = (snap: LogSnap, id: string): Log => {
     body,
     isJson,
     timestamp: snap.timestamp,
+    timeLabel: moment(snap.timestamp).format(),
   }
 }
 

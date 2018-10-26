@@ -60,6 +60,7 @@ const Header = styled.h2`
 `
 
 const Code = styled.div`
+  overflow-x: scroll;
   border: solid 1px #baa;
   border-radius: 0 0 3px 3px;
   padding-left: 10px;
