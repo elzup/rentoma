@@ -15,17 +15,46 @@ const getTimes = () => {
   return { ym, d, h, timePath, timestamp }
 }
 
+const filterHeadersKeys = [
+  'x-appengine-api-ticket',
+  'x-appengine-city',
+  'x-appengine-citylatlong',
+  'x-appengine-country',
+  'x-appengine-default-version-hostname',
+  'x-appengine-https',
+  'x-appengine-region',
+  'x-appengine-request-log-id',
+  'x-appengine-user-ip',
+  'x-forwarded-for',
+  'x-forwarded-host',
+  'x-forwarded-proto',
+  'x-forwarded-server',
+  'x-forwarded-url',
+  'x-cloud-trace-context',
+  'fastly-client',
+  'fastly-client-ip',
+  'fastly-orig-accept-encoding',
+  'fastly-ff',
+  'fastly-ssl',
+  'fastly-temp-xff',
+  'function-execution-id',
+  'x-nginx-proxy',
+  'x-real-ip',
+  'x-timer',
+  'x-varnish'
+]
+
 exports.log = functions.https.onRequest((req, response) => {
   const { body, headers } = req
+  filterHeadersKeys.forEach(key => {
+    delete headers[key]
+  })
   const { timePath, timestamp } = getTimes()
 
   const requestURL = req.protocol + '://' + req.get('host') + req.originalUrl
-  const remoteAddress =
-    req.headers['x-forwarded-for'] || req.connection.remoteAddress
   const general = {
     requestURL,
-    requestMethod: req.method,
-    remoteAddress
+    requestMethod: req.method
   }
   const log = {
     general,

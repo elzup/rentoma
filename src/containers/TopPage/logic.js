@@ -29,7 +29,8 @@ const filterHeader = (header: ?Object) => {
   }
   // TODO: firebase header
 
-  return _.omit(header, config.removeHeaderKeys)
+  return header
+  // return _.omit(header, config.removeHeaderKeys)
 }
 
 const toLog = (snap: LogSnap, id: string): Log => {
