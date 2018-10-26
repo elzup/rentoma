@@ -53,6 +53,7 @@ const config = {
     'function-execution-id',
     'fastly-client',
     'fastly-client-ip',
+    'fastly-orig-accept-encoding',
     'fastly-ff',
     'fastly-ssl',
     'fastly-temp-xff',

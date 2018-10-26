@@ -54,5 +54,5 @@ exports.log = functions.https.onRequest((req, response) => {
     .push(log, callback)
 
   console.log('save success')
-  response.status(200).end()
+  response.status(200).end('log success')
 })
