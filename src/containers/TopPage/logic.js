@@ -45,13 +45,14 @@ const bodyToString = (body: string | Object | null | void): string => {
 }
 
 const toLog = (snap: LogSnap, id: string): Log => {
+  const isJson = typeof snap.body === 'object' && snap.body !== null
   const body = bodyToString(snap.body)
   return {
     id,
     general: snap.general,
     headers: filterHeader(snap.headers),
     body,
-    isJson: typeof body === 'object' && body !== null,
+    isJson,
     timestamp: snap.timestamp,
   }
 }

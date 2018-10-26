@@ -27,11 +27,14 @@ const PlainTextLog = (props: Props) => {
           {log.general.method}
         </MethodBadge>
         {moment(log.timestamp).format()}
+        {log.isJson && <JsonBadge>JSON</JsonBadge>}
       </Header>
       <code>
         <Code>
           {lines.map((line, i) => (
-            <p key={i}>{line}</p>
+            <p key={i}>
+              <pre>{line}</pre>
+            </p>
           ))}
         </Code>
       </code>
@@ -65,11 +68,13 @@ const Code = styled.div`
     margin: 0;
     font-size: 12px;
     font-family: Menlo, Courier, monospace;
+    pre {
+      margin: 0;
+    }
   }
 `
 
 const MethodBadge = styled.span`
-  border: #aaa;
   background: white;
   padding: 2px 5px;
   margin: 5px;
@@ -78,6 +83,19 @@ const MethodBadge = styled.span`
   }
   &[data-method='POST'] {
     color: green;
+  }
+`
+
+const JsonBadge = styled.span`
+  background: white;
+  padding: 2px 5px;
+  margin: 5px;
+  color: red;
+  &:before {
+    content: '{';
+  }
+  &:after {
+    content: '}';
   }
 `
 
