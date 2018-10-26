@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 import type { State as RootState, Log } from '../../types'
 import * as selectors from './selectors'
@@ -22,9 +23,29 @@ class TopPage extends React.Component<Props> {
     return (
       <Page>
         {props.logs.map(log => (
-          <code>
-            <pre>{JSON.stringify(log)}</pre>
-          </code>
+          <table>
+            <tr>
+              <th>general</th>
+              <td>{JSON.stringify(log.general)}</td>
+            </tr>
+            <tr>
+              <th>body</th>
+              <td>{log.body}</td>
+              headers: Object, body: string, timestamp: number,
+            </tr>
+            <tr>
+              <th>headers</th>
+              <td>
+                <ul>
+                  {_.map(log.headers, (v, k) => (
+                    <li>
+                      {k}:{v}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          </table>
         ))}
       </Page>
     )

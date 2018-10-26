@@ -4,6 +4,7 @@ import _ from 'lodash'
 import type { ThunkAction, Log } from '../../types'
 import * as firebaseLogic from '../Firebase/logic'
 import * as actions from './actions'
+import config from '../../config'
 
 export function load(): ThunkAction {
   return async (dispatch, getState) => {
@@ -22,11 +23,20 @@ type LogSnap = {
   timestamp: number,
 }
 
+const filterHeader = (header: ?Object) => {
+  if (!header) {
+    return {}
+  }
+  // TODO: firebase header
+
+  return _.omit(header, config.removeHeaderKeys)
+}
+
 const toLog = (snap: LogSnap, id: string): Log => {
   return {
     id,
     general: snap.general,
-    headers: snap.headers || {},
+    headers: filterHeader(snap.headers),
     body: snap.body || '',
     timestamp: snap.timestamp,
   }
