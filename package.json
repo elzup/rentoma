@@ -11,17 +11,17 @@
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "promise": "8.0.2",
-    "react": "^16.4.2",
+    "react": "^16.6.0",
     "react-dev-utils": "^6.0.5",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.6.0",
     "react-fontawesome": "^1.6.1",
     "react-helmet": "^5.2.0",
     "react-images-upload": "^1.2.3",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.5",
     "react-scroll-to-component": "^1.0.2",
-    "redux": "^4.0.0",
+    "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.0.2"
   },
@@ -37,6 +37,7 @@
     "babel-plugin-s2s-action-types": "^0.4.11",
     "babel-plugin-s2s-reducer-root": "^0.3.4",
     "babel-plugin-s2s-state-root": "^0.2.10",
+    "babel-plugin-styled-components": "^1.8.0",
     "babel-runtime": "^6.26.0",
     "binary": "^0.3.0",
     "flow-bin": "^0.83.0",
@@ -90,6 +91,12 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "babel-plugin-styled-components",
+      {
+        "ssr": false
+      }
     ]
   },
   "eslintConfig": {

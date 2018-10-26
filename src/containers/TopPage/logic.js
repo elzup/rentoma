@@ -4,7 +4,6 @@ import _ from 'lodash'
 import type { ThunkAction, Log } from '../../types'
 import * as firebaseLogic from '../Firebase/logic'
 import * as actions from './actions'
-import config from '../../config'
 
 export function load(): ThunkAction {
   return async (dispatch, getState) => {
