@@ -14,7 +14,7 @@ const PlainTextLog = (props: Props) => {
   const { log } = props
   const lines = []
   lines.push(
-    `${log.general.method} ${log.general.protocol} / ${
+    `${log.general.method} ${log.general.protocol.toUpperCase()}/${
       log.general.httpVersion
     }`,
     ..._.map(log.headers, (v, k) => `${k}:${v}`),
