@@ -2,7 +2,7 @@
 import * as React from 'react'
 import _ from 'lodash'
 import moment from 'moment'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import type { Log } from '../../types'
 
@@ -22,16 +22,16 @@ const PlainTextLog = (props: Props) => {
   )
   return (
     <Wrapper>
-      <h2>
+      <Header>
         <MethodBadge data-method={log.general.method}>
           {log.general.method}
         </MethodBadge>
         {moment(log.timestamp).format()}
-      </h2>
+      </Header>
       <code>
         <Code>
-          {lines.map(line => (
-            <p>{line}</p>
+          {lines.map((line, i) => (
+            <p key={i}>{line}</p>
           ))}
         </Code>
       </code>
@@ -39,17 +39,23 @@ const PlainTextLog = (props: Props) => {
   )
 }
 
-const Wrapper = styled.section`
-  h2 {
-    font-size: 12px;
-    border: solid 1px #baa;
-    background: #fee;
-    border-radius: 3px 2px 0 0;
-    margin-bottom: 0;
-    border-bottom: 0;
-    padding: 10px;
-  }
+const fadeIn = keyframes`
+  from { background: orange; }
+to { background: white; }
 `
+
+const Wrapper = styled.section``
+const Header = styled.h2`
+  font-size: 12px;
+  border: solid 1px #baa;
+  background: white;
+  border-radius: 3px 2px 0 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+  padding: 10px;
+  animation: ${fadeIn} 1s linear;
+`
+
 const Code = styled.div`
   border: solid 1px #baa;
   border-radius: 0 0 3px 3px;
@@ -58,8 +64,7 @@ const Code = styled.div`
     line-height: 20px;
     margin: 0;
     font-size: 12px;
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
-      monospace;
+    font-family: Menlo, Courier, monospace;
   }
 `
 
