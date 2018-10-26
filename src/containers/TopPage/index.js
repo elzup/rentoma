@@ -7,6 +7,7 @@ import type { State as RootState, Log } from '../../types'
 import { load } from './logic'
 import LogList from '../../components/LogList'
 import NavBar from '../../components/NavBar'
+import EyeCatch from '../../components/EyeCatch'
 import * as selectors from './selectors'
 
 type Props = {
@@ -26,6 +27,7 @@ class TopPage extends React.Component<Props> {
         <NavBar />
         <Page>
           <LogList logs={props.logs} />
+          <EyeCatch />
         </Page>
       </>
     )
