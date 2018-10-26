@@ -3,8 +3,8 @@ const admin = require('firebase-admin')
 admin.initializeApp()
 
 const getTimes = () => {
-  const timestamp = new Date().getTime() + 1000 * 60 * 60 * 9
-  const dateJP = new Date(timestamp)
+  const timestamp = new Date().getTime()
+  const dateJP = new Date(timestamp + 1000 * 60 * 60 * 9)
   const y = dateJP.getFullYear()
   const m = `${dateJP.getMonth() + 1}`.padStart(2, 0)
   // ex 2018-01
