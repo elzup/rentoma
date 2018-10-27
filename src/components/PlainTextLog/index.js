@@ -32,9 +32,7 @@ const PlainTextLog = (props: Props) => {
       <code>
         <Code>
           {lines.map((line, i) => (
-            <p key={i}>
-              <pre>{line}</pre>
-            </p>
+            <p key={i}>{line}</p>
           ))}
         </Code>
       </code>
@@ -69,9 +67,6 @@ const Code = styled.div`
     margin: 0;
     font-size: 12px;
     font-family: Menlo, Courier, monospace;
-    pre {
-      margin: 0;
-    }
   }
 `
 
