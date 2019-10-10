@@ -36,7 +36,7 @@
     "babel-plugin-s2s-action-root": "0.4.2",
     "babel-plugin-s2s-action-types": "0.4.11",
     "babel-plugin-s2s-reducer-root": "0.3.4",
-    "babel-plugin-s2s-state-root": "0.2.10",
+    "babel-plugin-s2s-state-root": "1.0.1",
     "babel-plugin-styled-components": "1.10.6",
     "babel-runtime": "6.26.0",
     "binary": "0.3.0",
