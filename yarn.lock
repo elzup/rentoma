@@ -1937,6 +1937,10 @@ babel-add-flow-comments@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/babel-add-flow-comments/-/babel-add-flow-comments-0.3.0.tgz#af5647c43562330a38230bb7b27d853437857ba7"
 
+babel-add-flow-comments@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/babel-add-flow-comments/-/babel-add-flow-comments-0.4.0.tgz#80982e752f247b35be971f31165d61d498507d5e"
+
 babel-code-frame@6.26.0, babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -2320,16 +2324,16 @@ babel-plugin-react-docgen@^1.9.0:
     lodash "^4.17.0"
     react-docgen "^3.0.0-beta11"
 
-babel-plugin-s2s-action-creater@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-action-creater/-/babel-plugin-s2s-action-creater-0.3.1.tgz#1abd166f0db1137aa26a3acac6d06356dad91650"
+babel-plugin-s2s-action-creater@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-s2s-action-creater/-/babel-plugin-s2s-action-creater-1.0.1.tgz#3d50a571c876009f943d502a39e44bee96a451af"
   dependencies:
-    babel-add-flow-comments "^0.3.0"
-    babel-plugin-syntax-flow "^6.18.0"
-    babel-types "^6.26.0"
+    "@babel/plugin-syntax-flow" "^7.2.0"
+    "@babel/types" "^7.4.4"
+    babel-add-flow-comments "^0.4.0"
     lodash.camelcase "^4.3.0"
     lodash.snakecase "^4.1.1"
-    s2s-utils "^0.6.1"
+    s2s-utils "^1.0.1"
 
 babel-plugin-s2s-action-root@0.4.2:
   version "0.4.2"
@@ -10818,6 +10822,15 @@ s2s-utils@^0.6.1:
     babel-types "^6.26.0"
     normalize-path-sep "^0.1.1"
     slash "^1.0.0"
+
+s2s-utils@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/s2s-utils/-/s2s-utils-1.0.1.tgz#d7288c1f89621fac0473bc0b83810b097361d127"
+  dependencies:
+    "@babel/template" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    normalize-path-sep "^0.1.1"
+    slash "^2.0.0"
 
 s2s@0.20.1:
   version "0.20.1"
