@@ -11,7 +11,7 @@ type Props = {
 const LogList = (props: Props) => {
   return (
     <div>
-      {props.logs.map(log => (
+      {props.logs.map((log) => (
         <PlainTextLog key={log.id} log={log} />
       ))}
     </div>

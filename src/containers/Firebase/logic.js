@@ -14,7 +14,7 @@ export function loadLogsAtHour(): ThunkAction {
     fdb
       .ref(`log`)
       .limitToLast(10)
-      .on('value', snap => {
+      .on('value', (snap) => {
         dispatch(saveSnap(snap.val()))
       })
   }

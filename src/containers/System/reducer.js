@@ -9,7 +9,7 @@ const initialState: State = {
   timestampStr: '---',
 }
 
-export default function(state: State = initialState, action: Action): State {
+export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
     case Actions.UPDATE_SYSTEM:
       return action.system

@@ -6,7 +6,7 @@ export type State = { [id: string]: Log }
 
 export const initialState: State = {}
 
-export default function(state: State = initialState, action: Action): State {
+export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
     case Actions.RECEIVE_LOGS:
       return action.logs.reduce((p, c) => ({ ...p, [c.id]: c }), {})

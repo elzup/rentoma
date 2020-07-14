@@ -19,9 +19,6 @@ const ms = (state: RootState) => ({
   timestampStr: getTimestampStr(state),
 })
 
-const conn = connect(
-  ms,
-  {},
-)
+const conn = connect(ms, {})
 
 export default conn(TimestampLabel)

@@ -38,9 +38,6 @@ const ms = (state: RootState) => ({
   logs: selectors.getLogs(state),
 })
 
-const conn = connect(
-  ms,
-  { load },
-)
+const conn = connect(ms, { load })
 
 export default conn(TopPage)

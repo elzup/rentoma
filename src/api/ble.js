@@ -32,19 +32,19 @@ class BlueJelly {
     //callBack
     this.callbacks = {
       ...{
-        onScan: deviceName => {
+        onScan: (deviceName) => {
           console.log('onScan')
         },
-        onConnectGATT: uuid => {
+        onConnectGATT: (uuid) => {
           console.log('onConnectGATT')
         },
-        onWrite: uuid => {
+        onWrite: (uuid) => {
           console.log('onWrite')
         },
-        onStartNotify: uuid => {
+        onStartNotify: (uuid) => {
           console.log('onStartNotify')
         },
-        onStopNotify: uuid => {
+        onStopNotify: (uuid) => {
           console.log('onStopNotify')
         },
         onDisconnect: () => {
@@ -56,7 +56,7 @@ class BlueJelly {
         onReset: () => {
           console.log('onReset')
         },
-        onError: error => {
+        onError: (error) => {
           console.log('onError')
         },
       },
@@ -72,7 +72,7 @@ class BlueJelly {
     return (this.bluetoothDevice
       ? Promise.resolve()
       : this.requestDevice(uuid)
-    ).catch(error => {
+    ).catch((error) => {
       this.callbacks.onError(error)
     })
   }
@@ -82,7 +82,7 @@ class BlueJelly {
         acceptAllDevices: true,
         optionalServices: [this.hashUUID[uuid].serviceUUID],
       })
-      .then(device => {
+      .then((device) => {
         this.bluetoothDevice = device
         this.bluetoothDevice.addEventListener(
           'gattserverdisconnected',
@@ -104,13 +104,13 @@ class BlueJelly {
 
     return this.bluetoothDevice.gatt
       .connect()
-      .then(server => {
+      .then((server) => {
         return server.getPrimaryService(this.hashUUID[uuid].serviceUUID)
       })
-      .then(service => {
+      .then((service) => {
         return service.getCharacteristic(this.hashUUID[uuid].characteristicUUID)
       })
-      .then(characteristic => {
+      .then((characteristic) => {
         this.dataCharacteristic = characteristic
         this.dataCharacteristic.addEventListener(
           'characteristicvaluechanged',
@@ -118,7 +118,7 @@ class BlueJelly {
         )
         this.callbacks.onConnectGATT(uuid)
       })
-      .catch(error => {
+      .catch((error) => {
         this.callbacks.onError(error)
       })
   }
@@ -137,7 +137,7 @@ class BlueJelly {
       .then(() => {
         return this.dataCharacteristic.readValue()
       })
-      .catch(error => {
+      .catch((error) => {
         this.callbacks.onError(error)
       })
   }
@@ -154,7 +154,7 @@ class BlueJelly {
       .then(() => {
         this.callbacks.onWrite(uuid)
       })
-      .catch(error => {
+      .catch((error) => {
         this.callbacks.onError(error)
       })
   }
@@ -170,7 +170,7 @@ class BlueJelly {
       .then(() => {
         this.callbacks.onStartNotify(uuid)
       })
-      .catch(error => {
+      .catch((error) => {
         this.callbacks.onError(error)
       })
   }
@@ -186,7 +186,7 @@ class BlueJelly {
       .then(() => {
         this.callbacks.onStopNotify(uuid)
       })
-      .catch(error => {
+      .catch((error) => {
         this.callbacks.onError(error)
       })
   }

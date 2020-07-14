@@ -8,7 +8,7 @@ export type Action = _Action
 
 export type GetState = () => State
 
-type ThunkDispatch<A> = ThunkAction => A
+type ThunkDispatch<A> = (ThunkAction) => A
 
 export type Dispatch = ReduxDispatch<Action> & ThunkDispatch<Action>
 export type Store = ReduxStore<State, Action, Dispatch>
